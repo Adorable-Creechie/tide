@@ -9,12 +9,14 @@ if __name__ == "__main__":
 import generic_m3u8_searcher
 import ovostreams
 import liveonscorenet
+import hdstreamsclub
 
 # list of sources
 all_sources = [
     generic_m3u8_searcher,
     ovostreams,
-    liveonscorenet
+    liveonscorenet,
+    hdstreamsclub
 ]
 
 def url_to_source(url, fallback = generic_m3u8_searcher):
@@ -39,4 +41,9 @@ if __name__ == "__main__":
         r = url_to_source(url)
         print(r)
 
-    test_liveonscorenet()
+    def test_hdstreamsclub():
+        url = "http://hdstreams.club/hd/ch1.php"
+        r = url_to_source(url)
+        print(r)
+
+    test_hdstreamsclub()
