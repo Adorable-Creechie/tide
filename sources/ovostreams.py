@@ -1,10 +1,14 @@
 """
-Searches for all .m3u8 urls in the page and returns them.
-Not very sophisticated, eh?
+ovostreams.com
+
+method:
+first iframe
+search for m3u8
 """
 
-NAME = "GenericM3U8Searcher"
-KEY = "genericm3u8searcher"
+NAME = "ovostreams.com"
+KEY = "ovostreamscom"
+BASE = "www.ovostreams.com"
 
 if __name__ == "__main__":
     import sys
@@ -14,6 +18,7 @@ if __name__ == "__main__":
     sys.path.append("%s/.kodi/addons/plugin.video.tide" % os.getenv("HOME"))
 
 try:
+    import generic_m3u8_searcher
     from router import PLUGIN, path_for_source
     from helpers import http_get, log
     from common import add_headers, add_items, parse_url
@@ -25,7 +30,8 @@ import re
 from bs4 import BeautifulSoup 
 
 def can_handle(url):
-    return False
+    p_url = parse_url(url)
+    return p_url.netloc == BASE
 
 @PLUGIN.route("%s/<url>" % path_for_source(KEY))
 def root(url):
@@ -34,20 +40,20 @@ def root(url):
     add_items(urls, ref_url, PLUGIN)
 
 def get_urls(url):
-    parsed_url = parse_url(url)
+    p_url = parse_url(url)
     html = http_get(url)
-    urls = re.findall(r'(?:https?:)?//.*?\.m3u8', html.text)
-    formatted = []
-    for u in urls:
-        if u.startswith("//"):
-            formatted.append("%s:%s" % (parsed_url.scheme, u))
-        else:
-            formatted.append(u)
-    return formatted
+    soup = BeautifulSoup(html.text, 'html5lib')
+    iframe = soup.find("iframe")
+    iframe_url = "%s://%s/%s" % (p_url.scheme, p_url.netloc, iframe.get("src"))
+    return generic_m3u8_searcher.get_urls(iframe_url)
 
 if __name__ == "__main__":
     def test(url):
         vid_urls = get_urls(url)
         print(vid_urls)
 
-    test("https://videojs.github.io/videojs-contrib-hls/")
+    def test_can_handle(url):
+        print(can_handle(url))
+
+    test("http://www.ovostreams.com/tottenham-vs-southampton.php")
+    test_can_handle("http://www.ovostreams.com/tottenham-vs-southampton.php")
