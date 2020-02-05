@@ -30,5 +30,18 @@ def http_get(url, timeout = 15, extra_headers = {}):
     headers.update(extra_headers)
     return requests.get(url, headers=headers, timeout=timeout)
 
+def http_get_with_data(url, timeout = 15, extra_headers = {}, data = {}):
+    headers = {'User-Agent': random_agent()}
+    headers.update(extra_headers)
+    return requests.get(url, headers=headers, timeout=timeout, data=data).text
+
+def http_get_with_params(url, timeout = 15, extra_headers = {}, params = {}):
+    headers = {'User-Agent': random_agent()}
+    headers.update(extra_headers)
+    return requests.get(url, headers=headers, timeout=timeout, params=params)
+
 def log(text):
+    if __name__ == "__main__":
+        print(text)
+        return
     xbmc.log(text, level=xbmc.LOGNOTICE)

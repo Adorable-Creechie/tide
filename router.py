@@ -8,7 +8,7 @@ class FillPlugin:
 try:
     import routing
     PLUGIN = routing.Plugin()
-except Exception as e:
+except:
     PLUGIN = FillPlugin
 
 def path_for_provider(key):
