@@ -10,13 +10,15 @@ import generic_m3u8_searcher
 import ovostreams
 import liveonscorenet
 import hdstreamsclub
+import streamcr7net
 
 # list of sources
 all_sources = [
     generic_m3u8_searcher,
     ovostreams,
     liveonscorenet,
-    hdstreamsclub
+    hdstreamsclub,
+    streamcr7net
 ]
 
 def url_to_source(url, fallback = generic_m3u8_searcher):
@@ -26,24 +28,9 @@ def url_to_source(url, fallback = generic_m3u8_searcher):
     return fallback
 
 if __name__ == "__main__":
-    def test_60fps_live():
-        url = "http://60fps.live/sampdoria-vs-napoli/?link=1&utm_source=soccer100"
+    def test_streamcr7net():
+        url = "http://stream-cr7.net/embed/8.php"
         r = url_to_source(url)
         print(r)
 
-    def test_ovostreamscom():
-        url = "http://www.ovostreams.com/tottenham-vs-southampton.php"
-        r = url_to_source(url)
-        print(r)
-
-    def test_liveonscorenet():
-        url = "http://liveonscore.net/soccer-streams/tottenham-hotspur-vs-southampton/"
-        r = url_to_source(url)
-        print(r)
-
-    def test_hdstreamsclub():
-        url = "http://hdstreams.club/hd/ch1.php"
-        r = url_to_source(url)
-        print(r)
-
-    test_hdstreamsclub()
+    test_streamcr7net()
