@@ -34,8 +34,8 @@ def http_get(url, timeout = 15,
              params = {},
              cookies = {}):
     return requests.get(url, headers=headers, timeout=timeout,
-                        data = {},
-                        params = {},
+                        data = data,
+                        params = params,
                         cookies = cookies,
     )
 

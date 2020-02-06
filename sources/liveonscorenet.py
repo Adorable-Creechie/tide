@@ -52,11 +52,15 @@ def get_urls(url):
         "idgstream": vidgstream,
         "serverid": "",
     }
-    print(HLS_URL, params)
-    headers.update({"Referer": url})
+    headers.update({"Referer": url, "Origin": url, "Accept-Encoding": "compress"})
+    print(HLS_URL, params, headers)
     resp = http_get(HLS_URL, params = params, headers = headers)
+    print(resp.text)
     json = resp.json()
-    return [json["rawUrl"]]
+    rawUrl = json["rawUrl"]
+    if rawUrl == 'null':
+        return []
+    return [rawUrl]
 
 if __name__ == "__main__":
     def test(url):
@@ -66,5 +70,5 @@ if __name__ == "__main__":
     def test_can_handle(url):
         print(can_handle(url))
 
-    test("http://liveonscore.net/soccer-streams/tottenham-hotspur-vs-southampton/")
-    test_can_handle("http://liveonscore.net/soccer-streams/tottenham-hotspur-vs-southampton/")
+    test("http://liveonscore.net/soccer-streams/athletic-club-vs-barcelona/")
+    test_can_handle("http://liveonscore.net/soccer-streams/athletic-club-vs-barcelona/")
