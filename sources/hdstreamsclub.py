@@ -8,7 +8,7 @@ decode base64
 """
 
 NAME = "hdstreams.club"
-KEY = "hdstreams.club"
+KEY = "hdstreamsclub"
 BASE = "hdstreams.club"
 
 if __name__ == "__main__":
