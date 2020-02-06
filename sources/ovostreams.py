@@ -20,7 +20,7 @@ if __name__ == "__main__":
 try:
     import generic_m3u8_searcher
     from router import PLUGIN, path_for_source
-    from helpers import http_get, log
+    from helpers import http_get, header_random_agent, log
     from common import add_headers, add_items, parse_url
 except Exception as e:
     print(e)
@@ -40,8 +40,9 @@ def root(url):
     add_items(urls, ref_url, PLUGIN)
 
 def get_urls(url):
+    headers = header_random_agent()
     p_url = parse_url(url)
-    html = http_get(url)
+    html = http_get(url, headers=headers)
     soup = BeautifulSoup(html.text, 'html5lib')
     iframe = soup.find("iframe")
     iframe_url = "%s://%s/%s" % (p_url.scheme, p_url.netloc, iframe.get("src"))

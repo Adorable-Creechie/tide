@@ -26,7 +26,7 @@ else:
 
 try:
     from router import PLUGIN, path_for_provider
-    from helpers import http_get, log
+    from helpers import http_get, header_random_agent, log
     from sources import url_to_source
 except Exception as e:
     print(e)
@@ -75,8 +75,10 @@ def event(key):
     endOfDirectory(PLUGIN.handle)
 
 def get_all_sources(key):
+    headers = header_random_agent()
+    headers.update({"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"})
     url = "%s%s/" % (EVENT_URL, key)
-    html = http_get(url, extra_headers = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"})
+    html = http_get(url, headers = headers)
     soup = BeautifulSoup(html.text, 'html5lib')
     table = soup.find(id="streams")
     if not table :

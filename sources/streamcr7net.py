@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
 try:
     from router import PLUGIN, path_for_source
-    from helpers import http_get, http_get_with_params, log
+    from helpers import http_get, header_random_agent, log
     from common import add_headers, add_items, parse_url
 except Exception as e:
     print(e)
@@ -40,8 +40,9 @@ def root(url):
     add_items(urls, ref_url, PLUGIN)
 
 def get_urls(url):
+    headers = header_random_agent()
     p_url = parse_url(url)
-    html = http_get(url)
+    html = http_get(url, headers=headers)
     b64_str = re.search(r"window\.atob\('(.*)'\)", html.text).group(1)
     de_str = base64.b64decode(b64_str).decode("utf-8") 
     return [de_str]

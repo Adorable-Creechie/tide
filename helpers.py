@@ -25,20 +25,19 @@ def random_agent():
     return RAND_UAS[index].format(win_ver=random.choice(WIN_VERS), feature=random.choice(FEATURES),
                                   br_ver=random.choice(BR_VERS[index]))
 
-def http_get(url, timeout = 15, extra_headers = {}):
-    headers = {'User-Agent': random_agent()}
-    headers.update(extra_headers)
-    return requests.get(url, headers=headers, timeout=timeout)
+def header_random_agent():
+    return {'User-Agent': random_agent()}
 
-def http_get_with_data(url, timeout = 15, extra_headers = {}, data = {}):
-    headers = {'User-Agent': random_agent()}
-    headers.update(extra_headers)
-    return requests.get(url, headers=headers, timeout=timeout, data=data).text
-
-def http_get_with_params(url, timeout = 15, extra_headers = {}, params = {}):
-    headers = {'User-Agent': random_agent()}
-    headers.update(extra_headers)
-    return requests.get(url, headers=headers, timeout=timeout, params=params)
+def http_get(url, timeout = 15,
+             headers = {},
+             data = {},
+             params = {},
+             cookies = {}):
+    return requests.get(url, headers=headers, timeout=timeout,
+                        data = {},
+                        params = {},
+                        cookies = cookies,
+    )
 
 def log(text):
     if __name__ == "__main__":

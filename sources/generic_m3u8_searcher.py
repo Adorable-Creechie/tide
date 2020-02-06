@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
 try:
     from router import PLUGIN, path_for_source
-    from helpers import http_get, log
+    from helpers import http_get, header_random_agent, log
     from common import add_headers, add_items, parse_url
 except Exception as e:
     print(e)
@@ -34,9 +34,10 @@ def root(url):
     add_items(urls, ref_url, PLUGIN)
 
 def get_urls(url):
+    headers = header_random_agent()
     parsed_url = parse_url(url)
-    html = http_get(url)
-    urls = re.findall(r'(?:https?:)?//.*?\.m3u8', html.text)
+    html = http_get(url, headers=headers)
+    urls = search(html.text)
     formatted = []
     for u in urls:
         if u.startswith("//"):
@@ -44,6 +45,9 @@ def get_urls(url):
         else:
             formatted.append(u)
     return formatted
+
+def search(text):
+    return re.findall(r'(?:https?:)?//.*?\.m3u8', text)
 
 if __name__ == "__main__":
     def test(url):

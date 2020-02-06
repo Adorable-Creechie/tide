@@ -24,7 +24,7 @@ if __name__ == "__main__":
 
 try:
     from router import PLUGIN, path_for_source
-    from helpers import http_get, http_get_with_params, log
+    from helpers import http_get, header_random_agent, log
     from common import add_headers, add_items, parse_url
 except Exception as e:
     print(e)
@@ -44,17 +44,17 @@ def root(url):
     add_items(urls, ref_url, PLUGIN)
 
 def get_urls(url):
+    headers = header_random_agent()
     p_url = parse_url(url)
-    html = http_get(url)
+    html = http_get(url, headers=headers)
     vidgstream = re.search(r'var vidgstream = \"(.*)\"', html.text).group(1)
     params = {
         "idgstream": vidgstream,
         "serverid": "",
     }
     print(HLS_URL, params)
-    resp = http_get_with_params(HLS_URL, params = params, extra_headers = {
-        "Referer": url
-    })
+    headers.update({"Referer": url})
+    resp = http_get(HLS_URL, params = params, headers = headers)
     json = resp.json()
     return [json["rawUrl"]]
 
