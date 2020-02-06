@@ -14,6 +14,7 @@ import streamcr7net
 import techobestcom
 import hazmowatch
 import footballstreamto
+import soccer24hdcom
 
 # list of sources
 all_sources = [
@@ -24,7 +25,8 @@ all_sources = [
     streamcr7net,
     techobestcom,
     hazmowatch,
-    footballstreamto
+    footballstreamto,
+    soccer24hdcom
 ]
 
 def url_to_source(url, fallback = generic_m3u8_searcher):
@@ -34,9 +36,9 @@ def url_to_source(url, fallback = generic_m3u8_searcher):
     return fallback
 
 if __name__ == "__main__":
-    def test_footballstreamto():
-        url = "http://footballstream.to/embed/ch2.php"
+    def test():
+        url = "https://soccer24hd.com/game/match/1189/Sampdoria-Vs-Napoli.html"
         r = url_to_source(url)
         print(r)
 
-    test_footballstreamto()
+    test()
