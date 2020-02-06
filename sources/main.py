@@ -20,6 +20,7 @@ import papahdlive
 import _60fpslive
 import myoplaylive
 import sportstreampw
+import b9streamclub
 
 # list of sources
 all_sources = [
@@ -37,7 +38,8 @@ all_sources = [
     papahdlive,
     _60fpslive,
     myoplaylive,
-    sportstreampw
+    sportstreampw,
+    b9streamclub
 ]
 
 def url_to_source(url, fallback = generic_m3u8_searcher):
