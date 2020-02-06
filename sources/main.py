@@ -2,7 +2,6 @@ if __name__ == "__main__":
     import sys
     import os
     import json
-
     # ugly hack, but oh well
     sys.path.append("%s/.kodi/addons/plugin.video.tide" % os.getenv("HOME"))
 
@@ -17,6 +16,7 @@ import footballstreamto
 import soccer24hdcom
 import dubsstreamzcom
 import oomovienet
+import papahdlive
 
 # list of sources
 all_sources = [
@@ -30,7 +30,8 @@ all_sources = [
     footballstreamto,
     soccer24hdcom,
     dubsstreamzcom,
-    oomovienet
+    oomovienet,
+    papahdlive
 ]
 
 def url_to_source(url, fallback = generic_m3u8_searcher):
@@ -41,7 +42,7 @@ def url_to_source(url, fallback = generic_m3u8_searcher):
 
 if __name__ == "__main__":
     def test():
-        url = "http://oomovie.net/real-madrid-vs-real-sociedad/"
+        url = "http://papahd.live/real-madrid-vs-real-sociedad/"
         r = url_to_source(url)
         print(r)
 
