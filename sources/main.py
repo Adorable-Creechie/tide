@@ -18,6 +18,7 @@ import dubsstreamzcom
 import oomovienet
 import papahdlive
 import _60fpslive
+import myoplaylive
 
 # list of sources
 all_sources = [
@@ -33,7 +34,8 @@ all_sources = [
     dubsstreamzcom,
     oomovienet,
     papahdlive,
-    _60fpslive
+    _60fpslive,
+    myoplaylive
 ]
 
 def url_to_source(url, fallback = generic_m3u8_searcher):
@@ -44,7 +46,7 @@ def url_to_source(url, fallback = generic_m3u8_searcher):
 
 if __name__ == "__main__":
     def test():
-        url = "http://60fps.live/real-madrid-vs-real-sociedad/"
+        url = "https://myoplay.live/oplive/"
         r = url_to_source(url)
         print(r)
 
