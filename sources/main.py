@@ -19,6 +19,7 @@ import oomovienet
 import papahdlive
 import _60fpslive
 import myoplaylive
+import sportstreampw
 
 # list of sources
 all_sources = [
@@ -35,7 +36,8 @@ all_sources = [
     oomovienet,
     papahdlive,
     _60fpslive,
-    myoplaylive
+    myoplaylive,
+    sportstreampw
 ]
 
 def url_to_source(url, fallback = generic_m3u8_searcher):
@@ -46,7 +48,7 @@ def url_to_source(url, fallback = generic_m3u8_searcher):
 
 if __name__ == "__main__":
     def test():
-        url = "https://myoplay.live/oplive/"
+        url = "http://www.sportstream.pw/football6/index.html"
         r = url_to_source(url)
         print(r)
 
