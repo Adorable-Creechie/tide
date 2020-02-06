@@ -15,6 +15,7 @@ import techobestcom
 import hazmowatch
 import footballstreamto
 import soccer24hdcom
+import dubsstreamzcom
 
 # list of sources
 all_sources = [
@@ -26,7 +27,8 @@ all_sources = [
     techobestcom,
     hazmowatch,
     footballstreamto,
-    soccer24hdcom
+    soccer24hdcom,
+    dubsstreamzcom
 ]
 
 def url_to_source(url, fallback = generic_m3u8_searcher):
@@ -37,7 +39,7 @@ def url_to_source(url, fallback = generic_m3u8_searcher):
 
 if __name__ == "__main__":
     def test():
-        url = "https://soccer24hd.com/game/match/1189/Sampdoria-Vs-Napoli.html"
+        url = "http://www.dubsstreamz.com/watch/tables/live/real-madrid-vs-real-sociedad.html"
         r = url_to_source(url)
         print(r)
 
