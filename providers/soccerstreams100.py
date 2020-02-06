@@ -29,7 +29,7 @@ try:
     from helpers import http_get, header_random_agent, log
     from sources import url_to_source
 except Exception as e:
-    print(e)
+    log(e)
 
 import urllib
 from bs4 import BeautifulSoup 
@@ -104,6 +104,11 @@ def get_all_sources(key):
         })
     return all
 
+def safe_string_strip(o):
+    if o and o.string:
+        return o.string.strip()
+    return ""
+
 def get_all_events():
     html = http_get(ROOT_URL)
     soup = BeautifulSoup(html.text, 'html.parser')
@@ -114,8 +119,8 @@ def get_all_events():
         name = title.string.strip()
         thumb = a.find("img").get("src")
         url = title.get("href")
-        category = a.find(rel="category tag").string.strip()
-        date = a.find(class_="post-date").string.strip()
+        category = safe_string_strip(a.find(rel="category tag"))
+        date = safe_string_strip(a.find(class_="post-date"))
         all.append({
             "name": name,
             "category": category,
