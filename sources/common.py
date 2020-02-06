@@ -22,7 +22,8 @@ def add_headers(url, referer, origin = None):
     return "%s|referer=%s|origin=%s" % (url, referer, origin)
 
 def add_items(urls, ref_url, PLUGIN):
-    for i in range(len(urls)):
+    no_duplicates = list(dict.fromkeys(urls))
+    for i in range(len(no_duplicates)):
         title = "Source %d" % i
         li = ListItem(title)
         li.setInfo('video', {'title': title,

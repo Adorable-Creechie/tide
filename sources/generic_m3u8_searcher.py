@@ -44,7 +44,8 @@ def get_urls(url):
             formatted.append("%s:%s" % (parsed_url.scheme, u))
         else:
             formatted.append(u)
-    return formatted
+    no_duplicates = list(dict.fromkeys(formatted))
+    return no_duplicates
 
 def search(text):
     return re.findall(r'(?:https?:)?//.*?\.m3u8', text)
