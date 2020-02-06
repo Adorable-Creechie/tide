@@ -5,6 +5,9 @@ if __name__ == "__main__":
     # ugly hack, but oh well
     sys.path.append("%s/.kodi/addons/plugin.video.tide" % os.getenv("HOME"))
 
+
+from helpers import log
+
 import generic_m3u8_searcher
 import ovostreams
 import liveonscorenet
@@ -22,6 +25,7 @@ import myoplaylive
 import sportstreampw
 import b9streamclub
 import redsoccerinfo
+import worldstreamsnet
 
 # list of sources
 all_sources = [
@@ -41,7 +45,8 @@ all_sources = [
     myoplaylive,
     sportstreampw,
     b9streamclub,
-    redsoccerinfo
+    redsoccerinfo,
+    worldstreamsnet
 ]
 
 def url_to_source(url, fallback = generic_m3u8_searcher):
