@@ -1,8 +1,8 @@
 import urllib
 try:
-    from urllib.parse import urlparse
+    from urllib.parse import urlparse, urljoin
 except ImportError:
-     from urlparse import urlparse
+     from urlparse import urlparse, urljoin
 try:
     import xbmc
     from xbmcplugin import (
@@ -36,3 +36,6 @@ def add_items(urls, ref_url, PLUGIN):
 
 def parse_url(url):
     return urlparse(url)
+
+def join_url(a, b):
+    return urljoin(a, b)
