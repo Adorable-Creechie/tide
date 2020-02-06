@@ -11,6 +11,7 @@ import ovostreams
 import liveonscorenet
 import hdstreamsclub
 import streamcr7net
+import techobestcom
 
 # list of sources
 all_sources = [
@@ -18,7 +19,8 @@ all_sources = [
     ovostreams,
     liveonscorenet,
     hdstreamsclub,
-    streamcr7net
+    streamcr7net,
+    techobestcom
 ]
 
 def url_to_source(url, fallback = generic_m3u8_searcher):
@@ -28,9 +30,9 @@ def url_to_source(url, fallback = generic_m3u8_searcher):
     return fallback
 
 if __name__ == "__main__":
-    def test_streamcr7net():
-        url = "http://stream-cr7.net/embed/8.php"
+    def test_techobestcom():
+        url = "http://techobest.com/soccer5?utm_source=soccer100"
         r = url_to_source(url)
         print(r)
 
-    test_streamcr7net()
+    test_techobestcom()
