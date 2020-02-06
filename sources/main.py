@@ -17,6 +17,7 @@ import soccer24hdcom
 import dubsstreamzcom
 import oomovienet
 import papahdlive
+import _60fpslive
 
 # list of sources
 all_sources = [
@@ -31,7 +32,8 @@ all_sources = [
     soccer24hdcom,
     dubsstreamzcom,
     oomovienet,
-    papahdlive
+    papahdlive,
+    _60fpslive
 ]
 
 def url_to_source(url, fallback = generic_m3u8_searcher):
@@ -42,7 +44,7 @@ def url_to_source(url, fallback = generic_m3u8_searcher):
 
 if __name__ == "__main__":
     def test():
-        url = "http://papahd.live/real-madrid-vs-real-sociedad/"
+        url = "http://60fps.live/real-madrid-vs-real-sociedad/"
         r = url_to_source(url)
         print(r)
 
