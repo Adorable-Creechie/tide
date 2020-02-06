@@ -40,7 +40,7 @@ def http_get(url, timeout = 15,
     )
 
 def log(text):
-    if __name__ == "__main__":
+    try:
+        xbmc.log(text, level=xbmc.LOGNOTICE)
+    except:
         print(text)
-        return
-    xbmc.log(text, level=xbmc.LOGNOTICE)
