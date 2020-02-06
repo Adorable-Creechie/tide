@@ -42,17 +42,22 @@ def root(url):
 
 def get_urls(url):
     headers = header_random_agent()
+    cookies = {}
     p_url = parse_url(url)
     html = http_get(url, headers=headers)
+    cookies.update(html.cookies)
     soup = BeautifulSoup(html.text, 'html5lib')
     f_iframe_1_url = soup.find("iframe").get("src")
     headers.update({"Referer": url})
-    html = http_get(f_iframe_1_url, headers=headers)
+    html = http_get(f_iframe_1_url, headers=headers, cookies=cookies)
+    cookies.update(html.cookies)
     soup = BeautifulSoup(html.text, 'html5lib')
     f_iframe_2_url = soup.find("iframe").get("src")
     html = http_get(f_iframe_2_url, headers=headers)
+    cookies.update(html.cookies)
     soup = BeautifulSoup(html.text, 'html5lib')
     f_iframe_3_url = soup.find("iframe").get("src")
+    headers.update({"Referer": f_iframe_3_url})
     html = http_get(f_iframe_3_url, headers=headers)
     b64_str = re.search(r"window\.atob\(\"(.*)\"\)", html.text).group(1)
     de_str = base64.b64decode(b64_str).decode("utf-8") 
