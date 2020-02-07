@@ -82,6 +82,8 @@ def get_urls(url):
         if cookie != None:
             break
         time.sleep(random.uniform(2,0.5))
+    if cookie == None:
+        return []
     cookies_jar = requests.cookies.RequestsCookieJar()
     cookies_jar.set(cookie["name"], cookie["value"], path=cookie["path"])
     html = http_get(url, headers=header, cookies = cookies_jar)
