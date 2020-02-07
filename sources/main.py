@@ -27,6 +27,7 @@ import b9streamclub
 import redsoccerinfo
 import worldstreamsnet
 import buffstreamlive
+import streamfoottk
 
 # list of sources
 all_sources = [
@@ -48,7 +49,8 @@ all_sources = [
     b9streamclub,
     redsoccerinfo,
     worldstreamsnet,
-    buffstreamlive
+    buffstreamlive,
+    streamfoottk
 ]
 
 def url_to_source(url, fallback = generic_m3u8_searcher):
