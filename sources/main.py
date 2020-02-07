@@ -29,6 +29,7 @@ import worldstreamsnet
 import buffstreamlive
 import streamfoottk
 import redditstreamsblogspotcom
+import daddylivelive
 
 # list of sources
 all_sources = [
@@ -52,7 +53,8 @@ all_sources = [
     worldstreamsnet,
     buffstreamlive,
     streamfoottk,
-    redditstreamsblogspotcom
+    redditstreamsblogspotcom,
+    daddylivelive
 ]
 
 def url_to_source(url, fallback = generic_m3u8_searcher):
