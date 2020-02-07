@@ -19,11 +19,10 @@ if __name__ == "__main__":
 try:
     from router import PLUGIN, path_for_source
     from helpers import http_get, header_random_agent, log
-    from common import add_headers, add_items, parse_url
+    from common import add_headers, add_items, parse_url, wstreamto
 except Exception as e:
     print(e)
 
-import jsbeautifier
 import urllib
 import base64
 import re
@@ -54,10 +53,7 @@ def get_urls(url):
     headers.update({"Referer": f_iframe_1_url})
     f_iframe_2_url = soup.find("iframe").get("src")
     html = http_get(f_iframe_2_url, headers=headers)
-    f = re.search(r"<script>(eval.*?)</script>", html.text, re.MULTILINE | re.DOTALL).group(1)
-    deob = jsbeautifier.beautify(f)
-    m3u8_url = re.search(r'source: "(.*?)"', deob).group(1)
-    return [m3u8_url]
+    return [wstreamto(html.text)]
 
 if __name__ == "__main__":
     def test(url):
