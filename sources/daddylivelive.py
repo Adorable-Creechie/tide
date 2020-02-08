@@ -44,7 +44,7 @@ def get_urls(url):
     p_url = parse_url(url)
     html = http_get(url, headers=headers)
     cookies.update(html.cookies)
-    soup = BeautifulSoup(html.text, 'html5lib')
+    soup = BeautifulSoup(html.text, 'html.parser')
     f_iframe_1_url = soup.find("iframe").get("src")
     headers.update({"Referer": url})
     html = http_get(f_iframe_1_url, headers=headers, cookies=cookies)

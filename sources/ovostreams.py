@@ -43,7 +43,7 @@ def get_urls(url):
     headers = header_random_agent()
     p_url = parse_url(url)
     html = http_get(url, headers=headers)
-    soup = BeautifulSoup(html.text, 'html5lib')
+    soup = BeautifulSoup(html.text, 'html.parser')
     iframe = soup.find("iframe")
     iframe_url = "%s://%s/%s" % (p_url.scheme, p_url.netloc, iframe.get("src"))
     return generic_m3u8_searcher.get_urls(iframe_url)

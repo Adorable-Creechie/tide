@@ -79,15 +79,12 @@ def get_all_sources(key):
     headers.update({"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"})
     url = "%s%s/" % (EVENT_URL, key)
     html = http_get(url, headers = headers)
-    soup = BeautifulSoup(html.text, 'html5lib')
-    table = soup.find(id="streams")
-    if not table :
+    soup = BeautifulSoup(html.text, 'html.parser')
+    rows = soup.find_all("tr")
+    if len(rows) == 0:
         return []
-    rows = table.find_all("tr")
-    iter_rows = iter(rows)
-    next(iter_rows)
     all = []
-    for r in iter_rows:
+    for r in rows:
         columns = r.find_all("td")
         streamer = columns[0].getText().strip()
         quality = columns[1].string
@@ -147,7 +144,7 @@ if __name__ == "__main__":
         print(r)
 
     def test_get_all_sources():
-        r = get_all_sources("sampdoria-vs-napoli-match-preview")
+        r = get_all_sources("deportivo-alaves-vs-eibar-match-preview/")
         print(json.dumps(r))
 
     test_get_all_sources()

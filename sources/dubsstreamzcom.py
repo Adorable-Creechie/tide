@@ -52,7 +52,7 @@ def get_urls(url):
     headers = header_random_agent()
     p_url = parse_url(url)
     html = http_get(url, headers=headers)
-    soup = BeautifulSoup(html.text, 'html5lib')
+    soup = BeautifulSoup(html.text, 'html.parser')
     f_iframe_url = soup.find("iframe").get("src")
     headers.update({"Referer": url})
     html = http_get(f_iframe_url, headers=headers)
@@ -86,5 +86,5 @@ if __name__ == "__main__":
     def test_can_handle(url):
         print(can_handle(url))
 
-    test("http://www.dubsstreamz.com/watch/tables/live/real-madrid-vs-real-sociedad.html")
-    test_can_handle("http://www.dubsstreamz.com/watch/tables/live/real-madrid-vs-real-sociedad.html")
+    test("http://www.dubsstreamz.com/watch/sports/live/everton-vs-crystal-palace.html")
+    test_can_handle("http://www.dubsstreamz.com/watch/sports/live/everton-vs-crystal-palace.html")
