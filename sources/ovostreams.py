@@ -8,7 +8,7 @@ search for m3u8
 
 NAME = "ovostreams.com"
 KEY = "ovostreamscom"
-BASE = "www.ovostreams.com"
+BASE = "ovostreams.com"
 
 if __name__ == "__main__":
     import sys
@@ -31,7 +31,7 @@ from bs4 import BeautifulSoup
 
 def can_handle(url):
     p_url = parse_url(url)
-    return p_url.netloc == BASE
+    return p_url.netloc.strip("www.") == BASE
 
 @PLUGIN.route("%s/<url>" % path_for_source(KEY))
 def root(url):
