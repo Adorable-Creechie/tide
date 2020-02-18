@@ -85,20 +85,35 @@ def get_all_sources(key):
         return []
     all = []
     for r in rows:
-        columns = r.find_all("td")
-        streamer = columns[0].getText().strip()
-        quality = columns[1].string
-        channel = columns[2]
-        channel_name = channel.string
-        url = channel.find("a").get("href")
-        lang = columns[5].string
-        all.append({
-            "streamer": streamer,
-            "quality": quality,
-            "channel": channel_name,
-            "lang": lang,
-            "url": url
-        })
+        try:
+            columns = r.find_all("td")
+            if (len(columns) == 3):
+                streamer = columns[0].getText().strip()
+                quality = columns[2].string
+                channel = columns[1]
+                channel_name = channel.string
+                url = channel.find("a").get("href")
+                all.append({
+                    "streamer": streamer,
+                    "channel": channel_name,
+                    "url": url
+                })
+            else:
+                streamer = columns[0].getText().strip()
+                quality = columns[1].string
+                channel = columns[2]
+                channel_name = channel.string
+                url = channel.find("a").get("href")
+                lang = columns[5].string
+                all.append({
+                    "streamer": streamer,
+                    "quality": quality,
+                    "channel": channel_name,
+                    "lang": lang,
+                    "url": url
+                })
+        except:
+            pass
     return all
 
 def safe_string_strip(o):
@@ -144,7 +159,7 @@ if __name__ == "__main__":
         print(r)
 
     def test_get_all_sources():
-        r = get_all_sources("deportivo-alaves-vs-eibar-match-preview/")
+        r = get_all_sources("atletico-madrid-vs-liverpool-match-preview/")
         print(json.dumps(r))
 
     test_get_all_sources()
