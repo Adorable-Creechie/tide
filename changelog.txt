@@ -1,3 +1,7 @@
+v0.0.5 (2020-08-15)
+- providers: rename soccerstreams100.tv to streams100.net
+- providers: update root/event URLs for soccerstreams100.tv
+
 v0.0.3 (2020-02-18)
 - providers: add acestream table support for soccerstreams100.tv
 - sources: fix myoplay.live
