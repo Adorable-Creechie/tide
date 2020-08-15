@@ -3,8 +3,8 @@ NAME = "Soccerstreams100"
 KEY = "soccerstreams100"
 
 # page info
-ROOT_URL = "https://my.soccerstreams100.tv/"
-EVENT_URL = "https://streams100.net/event/"
+ROOT_URL = "https://stream.streams100.net/"
+EVENT_URL = "https://stream.streams100.net/event/"
 
 if __name__ == "__main__":
     import sys
@@ -159,7 +159,7 @@ if __name__ == "__main__":
         print(r)
 
     def test_get_all_sources():
-        r = get_all_sources("atletico-madrid-vs-liverpool-match-preview/")
+        r = get_all_sources("manchester-city-vs-olympique-lyonnais-match-preview")
         print(json.dumps(r))
 
     test_get_all_sources()
