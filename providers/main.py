@@ -1,6 +1,6 @@
-import soccerstreams100
+import streams100
 
 # list of providers
 all_providers = [
-    soccerstreams100
+    streams100
 ]

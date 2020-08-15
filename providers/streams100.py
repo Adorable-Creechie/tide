@@ -1,6 +1,6 @@
 # provider info
-NAME = "Soccerstreams100"
-KEY = "soccerstreams100"
+NAME = "streams100"
+KEY = "streams100"
 
 # page info
 ROOT_URL = "https://stream.streams100.net/"
