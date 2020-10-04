@@ -1,3 +1,12 @@
+v0.0.7 (2020-10-04)
+- sources: add buffstream1.com
+- sources: add hockeynews.site
+- sources: add hhdstreams.club
+- sources: add mazymedias.com
+- sources: add fightpass.site
+- sources: add liveonscore.tv
+- sources(streamcr7-net): add m3u8 search alternative
+
 v0.0.6 (2020-10-04)
 - providers(streams100): update event url
 

@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := default
 proj = "plugin.video.tide"
-version = "0.0.6"
+version = "0.0.7"
 
 default:
 	git archive --prefix=$(proj)/ master -o $(proj)-$(version).zip
