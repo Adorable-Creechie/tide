@@ -43,9 +43,14 @@ def get_urls(url):
     headers = header_random_agent()
     p_url = parse_url(url)
     html = http_get(url, headers=headers)
-    b64_str = re.search(r"window\.atob\('(.*)'\)", html.text).group(1)
-    de_str = base64.b64decode(b64_str).decode("utf-8") 
-    return [de_str]
+
+    try:
+        b64_str = re.search(r"window\.atob\('(.*)'\)", html.text).group(1)
+        de_str = base64.b64decode(b64_str).decode("utf-8") 
+        return [de_str]
+    except:
+        m3u8 = re.search(r"source: \'(.*)\'", html.text).group(1)
+        return [m3u8]
 
 if __name__ == "__main__":
     def test(url):
@@ -55,5 +60,5 @@ if __name__ == "__main__":
     def test_can_handle(url):
         print(can_handle(url))
 
-    test("http://stream-cr7.net/embed/8.php")
-    test_can_handle("http://stream-cr7.net/embed/8.php")
+    test("http://stream-cr7.net/embed/1.php")
+    test_can_handle("http://stream-cr7.net/embed/1.php")
