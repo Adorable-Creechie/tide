@@ -11,6 +11,7 @@ from helpers import log
 import generic_m3u8_searcher
 import ovostreams
 import liveonscorenet
+import liveonscoretv
 import hdstreamsclub
 import streamcr7net
 import techobestcom
@@ -36,6 +37,7 @@ all_sources = [
     generic_m3u8_searcher,
     ovostreams,
     liveonscorenet,
+    liveonscoretv,
     hdstreamsclub,
     streamcr7net,
     techobestcom,
