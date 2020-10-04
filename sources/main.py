@@ -34,6 +34,7 @@ import daddylivelive
 import fightpasssite
 import mazymediascom
 import hhdstreamsclub
+import hockeynewssite
 
 # list of sources
 all_sources = [
@@ -63,6 +64,7 @@ all_sources = [
     fightpasssite,
     mazymediascom,
     hhdstreamsclub,
+    hockeynewssite,
 ]
 
 def url_to_source(url, fallback = generic_m3u8_searcher):
