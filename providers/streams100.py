@@ -3,7 +3,7 @@ NAME = "streams100"
 KEY = "streams100"
 
 # page info
-ROOT_URL = "https://stream.streams100.net/"
+ROOT_URL = "https://soccerstreams-100.com/"
 EVENT_URL = "https://soccer.streamsgate.tv/event/"
 
 if __name__ == "__main__":
