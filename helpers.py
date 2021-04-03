@@ -40,6 +40,7 @@ def http_get(url, timeout = 15,
     )
 
 def log(text):
+    # raise Exception("Error log: ", text) 
     try:
         xbmc.log(text, level=xbmc.LOGNOTICE)
     except:

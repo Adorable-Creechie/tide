@@ -1,3 +1,6 @@
+v0.1.0 (2021-04-03)
+- switch to python3 to make it work on Kodi 19 Matrix
+
 v0.0.8 (2020-12-27)
 - providers(streams100): update root URL
 

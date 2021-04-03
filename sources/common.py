@@ -29,7 +29,7 @@ def add_items(urls, ref_url, PLUGIN):
         li = ListItem(title)
         li.setInfo('video', {'title': title,
                                     'mediatype': 'video'})
-        m3u8_url = urllib.quote(urls[i], safe="%/:=&?~#+!$,;'@()*[]")
+        m3u8_url = urllib.parse.quote(urls[i], safe="%/:=&?~#+!$,;'@()*[]")
         addDirectoryItem(PLUGIN.handle, add_headers(m3u8_url, ref_url), li)
     if (len(urls) == 0):
         li = ListItem("No playable sources found")

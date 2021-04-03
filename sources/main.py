@@ -8,34 +8,34 @@ if __name__ == "__main__":
 
 from helpers import log
 
-import generic_m3u8_searcher
-import ovostreams
-import liveonscorenet
-import liveonscoretv
-import hdstreamsclub
-import streamcr7net
-import techobestcom
-import hazmowatch
-import footballstreamto
-import soccer24hdcom
-import dubsstreamzcom
-import oomovienet
-import papahdlive
-import _60fpslive
-import myoplaylive
-import sportstreampw
-import b9streamclub
-import redsoccerinfo
-import worldstreamsnet
-import buffstreamlive
-import streamfoottk
-import redditstreamsblogspotcom
-import daddylivelive
-import fightpasssite
-import mazymediascom
-import hhdstreamsclub
-import hockeynewssite
-import buffstream1com
+from . import generic_m3u8_searcher
+from . import ovostreams
+from . import liveonscorenet
+from . import liveonscoretv
+from . import hdstreamsclub
+from . import streamcr7net
+from . import techobestcom
+from . import hazmowatch
+from . import footballstreamto
+from . import soccer24hdcom
+from . import dubsstreamzcom
+from . import oomovienet
+from . import papahdlive
+from . import _60fpslive
+from . import myoplaylive
+from . import sportstreampw
+from . import b9streamclub
+from . import redsoccerinfo
+from . import worldstreamsnet
+from . import buffstreamlive
+from . import streamfoottk
+from . import redditstreamsblogspotcom
+from . import daddylivelive
+from . import fightpasssite
+from . import mazymediascom
+from . import hhdstreamsclub
+from . import hockeynewssite
+from . import buffstream1com
 
 # list of sources
 all_sources = [
