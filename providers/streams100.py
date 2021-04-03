@@ -66,7 +66,7 @@ def event(key):
         source_fn = url_to_source(s["url"])
         sources_dec.append({"el": s, "fn": source_fn})
     items = list(map(lambda s: (PLUGIN.url_for(s["fn"].root,
-                                            url=urllib.quote(s["el"]["url"].encode('utf8'), safe='')),
+                                            url=urllib.parse.quote(s["el"]["url"].encode('utf8'), safe='')),
                                 itemMaker(s["el"], s["fn"]), True), sources_dec))
     if (len(sources) == 0):
         li = ListItem("No playable sources found")

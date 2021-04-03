@@ -1,4 +1,4 @@
-import streams100
+from . import streams100
 
 # list of providers
 all_providers = [

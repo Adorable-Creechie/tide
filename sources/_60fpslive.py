@@ -17,10 +17,10 @@ if __name__ == "__main__":
     sys.path.append("%s/.kodi/addons/plugin.video.tide" % os.getenv("HOME"))
 
 try:
-    import generic_m3u8_searcher
+    from . import generic_m3u8_searcher
     from router import PLUGIN, path_for_source
     from helpers import http_get, header_random_agent, log
-    from common import add_headers, add_items, parse_url
+    from .common import add_headers, add_items, parse_url
 except Exception as e:
     print(e)
 
@@ -32,7 +32,7 @@ def can_handle(url):
 
 @PLUGIN.route("%s/<url>" % path_for_source(KEY))
 def root(url):
-    ref_url = urllib.unquote(url).decode('utf8')
+    ref_url = urllib.parse.unquote(url)
     urls = get_urls(ref_url)
     add_items(urls, ref_url, PLUGIN)
 

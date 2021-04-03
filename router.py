@@ -5,11 +5,13 @@ class FillPlugin:
             return func
         return decorator
 
+PLUGIN = FillPlugin
+
 try:
     import routing
     PLUGIN = routing.Plugin()
 except:
-    PLUGIN = FillPlugin
+    pass
 
 def path_for_provider(key):
     return "/providers/%s" % key
