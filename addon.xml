@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.tide" name="Tide" version="0.1.0" provider-name="wahed">
-    <requires>
-        <import addon="xbmc.python" version="3.0.0"/>
-        <import addon="script.module.routing" version="0.2.3"/>
-        <import addon="script.module.requests" version="2.12.4"/>
-        <import addon="script.module.beautifulsoup4" version="4.6.2"/> 
-    </requires>
-    <extension point="xbmc.python.pluginsource" library="addon.py">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <platform>all</platform>
-        <summary lang="en">sport event streaming</summary>
-        <description lang="en">sport event streaming</description>
-    </extension>
+  <requires>
+    <import addon="xbmc.python" version="3.0.0"/>
+    <import addon="script.module.routing" version="0.2.3"/>
+    <import addon="script.module.requests" version="2.12.4"/>
+    <import addon="script.module.beautifulsoup4" version="4.6.2"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">sport event streaming</summary>
+    <description lang="en">sport event streaming</description>
+    <assets>
+      <icon>assets/icon.png</icon>
+      <fanart>assets/fanart.jpg</fanart>
+    </assets>
+  </extension>
 </addon>
