@@ -39,6 +39,7 @@ from . import buffstream1com
 from . import mazystreamsxyz
 from . import alexsportslive
 from . import streamsportpro
+from . import allsportsmedialive
 
 # list of sources
 all_sources = [
@@ -72,7 +73,8 @@ all_sources = [
     buffstream1com,
     mazystreamsxyz,
     alexsportslive,
-    streamsportpro
+    streamsportpro,
+    allsportsmedialive
 ]
 
 def url_to_source(url, fallback = generic_m3u8_searcher):
