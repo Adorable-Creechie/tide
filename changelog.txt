@@ -1,3 +1,11 @@
+v0.1.1 (2021-04-04)
+- sources: add mazystreams.xyz
+- sources: add alexsports.live
+- sources: add streamsports.pro
+- sources: add allsportsmedia.live
+- sources: add streamspass.com
+- sources: fix hockeynews.site
+
 v0.1.0 (2021-04-03)
 - switch to python3 to make it work on Kodi 19 Matrix
 
