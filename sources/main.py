@@ -42,6 +42,7 @@ from . import streamsportpro
 from . import allsportsmedialive
 from . import streamspasscom
 from . import nflgamezonecom
+from . import techoreelscom
 
 # list of sources
 all_sources = [
@@ -79,6 +80,7 @@ all_sources = [
     allsportsmedialive,
     streamspasscom,
     nflgamezonecom,
+    techoreelscom,
 ]
 
 def url_to_source(url, fallback = generic_m3u8_searcher):
