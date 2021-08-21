@@ -9,7 +9,7 @@ if __name__ == "__main__":
 from helpers import log
 
 from . import generic_m3u8_searcher
-from . import ovostreams
+from . import ovostreamscom
 from . import liveonscorenet
 from . import liveonscoretv
 from . import hdstreamsclub
@@ -50,7 +50,7 @@ from . import sportingliveco
 # list of sources
 all_sources = [
     generic_m3u8_searcher,
-    ovostreams,
+    ovostreamscom,
     liveonscorenet,
     liveonscoretv,
     hdstreamsclub,

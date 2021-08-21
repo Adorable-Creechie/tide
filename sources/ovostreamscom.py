@@ -45,7 +45,7 @@ def get_urls(url):
     html = http_get(url, headers=headers)
     soup = BeautifulSoup(html.text, 'html.parser')
     iframe = soup.find("iframe")
-    iframe_url = "%s://%s/%s" % (p_url.scheme, p_url.netloc, iframe.get("src"))
+    iframe_url = iframe.get("src")
     return generic_m3u8_searcher.get_urls(iframe_url)
 
 if __name__ == "__main__":
@@ -56,5 +56,5 @@ if __name__ == "__main__":
     def test_can_handle(url):
         print(can_handle(url))
 
-    test("http://www.ovostreams.com/tottenham-vs-southampton.php")
-    test_can_handle("http://www.ovostreams.com/tottenham-vs-southampton.php")
+    test("http://www.ovostreams.com/liverpool-vs-burnley.php")
+    test_can_handle("http://www.ovostreams.com/liverpool-vs-burnley.php")
