@@ -1,3 +1,6 @@
+v0.2.0 (2021-09-11)
+- providers: add soccerstreamlinks.com (soccer)
+
 v0.1.6 (2021-08-21)
 - sources: fix ovostreams.com
 - sources: add bdnewszh.com
