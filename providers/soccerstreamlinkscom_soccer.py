@@ -1,5 +1,5 @@
 # provider info
-NAME = "soccerstreamlinks (soccer)"
+NAME = "soccerstreamlinks [UPPERCASE][B][COLOR pink](soccer)[/COLOR][/B][/UPPERCASE]"
 KEY = "soccerstreamlinks-soccer"
 
 # page info
@@ -32,12 +32,22 @@ except Exception as e:
     log(e)
 
 import urllib
+import hashlib
 from bs4 import BeautifulSoup
+
+def league_color(league):
+    colors = ["crimson", "orange", "yellow", "lime", "blue", "cyan", "pink", "tomato", "gold", "turquoise", "fuchsia"]
+    color_ind = int(hashlib.sha256(league.encode('utf-8')).hexdigest(), 16) % len(colors)
+    return colors[color_ind]
 
 @PLUGIN.route(path_for_provider(KEY))
 def root():
     def itemMaker(event):
-        li = ListItem("%s" % (event.get("name", "")))
+        li = ListItem("[B][COLOR %s]%s[/COLOR][/B] | %s" % (
+            league_color(event.get("league", "")),
+            event.get("league", ""),
+            event.get("name", ""),
+        ))
         li.setArt({'thumb': event.get("thumb", None),
                 'fanart': event.get("fanart", None)})
         return li
@@ -131,12 +141,16 @@ def get_all_events():
     html = http_get(ROOT_URL)
     soup = BeautifulSoup(html.text, "html.parser")
     schedules = soup.find_all(class_="responsive-table-wrap")
+    captions = soup.find_all(class_="table-caption")
     all = []
-    for schedule in schedules:
+    for (caption, schedule) in zip(captions, schedules):
+        league = caption.getText().strip()
         table_body = schedule.find("tbody")
         matches = table_body.find_all("tr")
         for match in matches:
-            all.append(parse_match(match))
+            parsed_match = parse_match(match)
+            parsed_match["league"] = league
+            all.append(parsed_match)
     return all
 
 if __name__ == "__main__":
@@ -148,4 +162,4 @@ if __name__ == "__main__":
         r = get_all_sources("9576168")
         print(json.dumps(r))
 
-    test_get_all_sources()
+    test_get_all_events()
