@@ -49,6 +49,7 @@ from . import sportingliveco
 from . import bdnewszhcom
 from . import daddyliveme
 from . import liveonscoreto
+from . import hockeywebsite
 
 # list of sources
 all_sources = [
