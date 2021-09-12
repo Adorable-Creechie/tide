@@ -1,5 +1,5 @@
 """
-liveonscore.net
+liveonscore.to
 
 method:
 get vidgstream variable
@@ -10,10 +10,10 @@ json data {
 where UrlID: vidgstream 
 """
 
-NAME = "liveonscore.net"
-KEY = "liveonscorenet"
-BASE = "liveonscore.net"
-HLS_URL = "http://liveonscore.net/gethls"
+NAME = "liveonscore.to"
+KEY = "liveonscoreto"
+BASE = "liveonscore.to"
+HLS_URL = "http://liveonscore.to/gethls"
 
 if __name__ == "__main__":
     import sys
@@ -68,5 +68,5 @@ if __name__ == "__main__":
     def test_can_handle(url):
         print(can_handle(url))
 
-    test("http://liveonscore.net/soccer-streams/athletic-club-vs-barcelona/")
-    test_can_handle("http://liveonscore.net/soccer-streams/athletic-club-vs-barcelona/")
+    test("http://liveonscore.to/soccer-streams/serie-a/sampdoria-vs-inter/32417/")
+    test_can_handle("http://liveonscore.to/soccer-streams/serie-a/sampdoria-vs-inter/32417/")
