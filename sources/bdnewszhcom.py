@@ -46,6 +46,8 @@ def get_urls(url):
     soup = BeautifulSoup(html.text, 'html.parser')
     iframe = soup.find("iframe")
     iframe_url = iframe.get("src")
+    if iframe_url.startswith("//"):
+        iframe_url = "https:{}".format(iframe_url)
     return generic_m3u8_searcher.get_urls(iframe_url)
 
 if __name__ == "__main__":

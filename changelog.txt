@@ -5,6 +5,7 @@ v0.2.1 (2021-09-12)
 - sources: add thecyclingentertainment.com
 - sources: add nflscoop.net
 - sources: add uhdstreams.club
+- sources: fix bdnewszh.com
 
 v0.2.0 (2021-09-11)
 - providers: add soccerstreamlinks.com (soccer)
