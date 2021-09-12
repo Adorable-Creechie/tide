@@ -51,6 +51,7 @@ from . import daddyliveme
 from . import liveonscoreto
 from . import hockeywebsite
 from . import thecyclingentertainmentcom
+from . import nflscoopnet
 
 # list of sources
 all_sources = [
