@@ -2,6 +2,7 @@ v0.2.1 (2021-09-12)
 - providers(soccerstreamlinks_soccer): added league name to labels
 - sources: add liveonscore.to
 - sources: add hockeyweb.site
+- sources: add thecyclingentertainment.com
 
 v0.2.0 (2021-09-11)
 - providers: add soccerstreamlinks.com (soccer)
