@@ -52,6 +52,7 @@ from . import liveonscoreto
 from . import hockeywebsite
 from . import thecyclingentertainmentcom
 from . import nflscoopnet
+from . import uhdstreamsclub
 
 # list of sources
 all_sources = [
@@ -97,7 +98,9 @@ all_sources = [
     daddyliveme,
     liveonscoreto,
     hockeywebsite,
-    thecyclingentertainmentcom
+    thecyclingentertainmentcom,
+    nflscoopnet,
+    uhdstreamsclub,
 ]
 
 def url_to_source(url, fallback = generic_m3u8_searcher):
