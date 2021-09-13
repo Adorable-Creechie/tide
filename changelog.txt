@@ -1,3 +1,6 @@
+v0.2.2 (2021-09-13)
+- providers: temporary disable streams100
+
 v0.2.1 (2021-09-12)
 - providers(soccerstreamlinks_soccer): added league name to labels
 - sources: add liveonscore.to
