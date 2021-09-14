@@ -1,8 +1,3 @@
-"""
-Searches for all .m3u8 urls in the page and returns them.
-Not very sophisticated, eh?
-"""
-
 NAME = "[COLOR orange]generic[/COLOR]"
 KEY = "genericm3u8searcher"
 
@@ -14,6 +9,7 @@ except Exception as e:
     print(e)
 
 import urllib
+import base64
 import re
 from bs4 import BeautifulSoup 
 
@@ -31,6 +27,22 @@ def get_urls(url):
     parsed_url = parse_url(url)
     html = http_get(url, headers=headers)
     return search_and_format(html.text)
+
+def nth_iframe_get_urls(url, nth_iframe = 0):
+    headers = header_random_agent()
+    cookies = {}
+    p_url = parse_url(url)
+    html = http_get(url, headers=headers)
+    cookies.update(html.cookies)
+    soup = BeautifulSoup(html.text, 'html.parser')
+    iframe_url = soup.find_all("iframe")[nth_iframe].get("src")
+    return get_urls(iframe_url)
+
+def first_iframe_get_urls(url):
+    return nth_iframe_get_urls(url, 0)
+
+def snd_iframe_get_urls(url):
+    return nth_iframe_get_urls(url, 1)
 
 def search_and_format(html):
     urls = search(html)
@@ -50,6 +62,48 @@ def format(urls):
 
 def search(text):
     return re.findall(r'(?:https?:)?//.*?\.m3u8|\'(?:https?:)?//.*?\.m3u8.*?\'|\"(?:https?:)?//.*?\.m3u8.*?\"', text)
+
+def dubzalgo(url, nth_iframe=0):
+    """
+method:
+nth iframe
+var rSI : string = ""
+var tlc : [string]
+var mn : int
+for each s in tlc:
+    b64 = base64.b64decode(s).decode("utf-8")
+    str = re.sub('\D', '', b64)
+    str_n = int(str)
+    str_n -= 61751400
+    rSI += chr(str_n)
+search_and_format(rSI)
+"""
+    headers = header_random_agent()
+    p_url = parse_url(url)
+    html = http_get(url, headers=headers)
+    soup = BeautifulSoup(html.text, 'html.parser')
+    iframe_url = soup.find_all("iframe")[nth_iframe].get("src")
+    headers.update({"Referer": url})
+    html = http_get(iframe_url, headers=headers)
+    text = html.text
+
+    regex = r" = \[(.*)\]"
+    rSI = ""
+    tlc = re.search(regex, text, re.MULTILINE | re.DOTALL).group(1)
+    tlc = re.sub('\s', '', tlc)
+    tlc = tlc.split(",")
+    tlc = list(map(lambda x: x.strip('"'), tlc))
+    mn = re.search(r"\)\) - (\d+)\);", text).group(1).strip()
+    mn = int(mn)
+    for s in tlc:
+        b64 = base64.b64decode(s).decode("utf-8")
+        str = re.sub('\D', '', b64)
+        if (str):
+            str_n = int(str)
+            str_n -= mn
+            rSI += chr(str_n)
+
+    return search_and_format(rSI)
 
 if __name__ == "__main__":
     def test(url):

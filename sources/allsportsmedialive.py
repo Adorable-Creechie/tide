@@ -2,7 +2,7 @@
 allsportsmedia.live
 
 method:
-generic m3u8 searcher
+generic/get_urls
 """
 
 NAME = "allsportsmedia.live"

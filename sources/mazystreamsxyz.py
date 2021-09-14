@@ -2,7 +2,7 @@
 mazystreams.xyz
 
 method:
-generic m3u8 searcher
+generic/get_urls
 """
 
 NAME = "mazystreams.xyz"

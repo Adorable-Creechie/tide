@@ -2,7 +2,7 @@
 nflscoop.net
 
 method:
-generic m3u8 searcher
+generic/get_urls
 """
 
 NAME = "nflscoop.net"

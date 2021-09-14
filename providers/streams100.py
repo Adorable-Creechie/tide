@@ -10,8 +10,6 @@ if __name__ == "__main__":
     import sys
     import os
     import json
-
-    # ugly hack, but oh well
     sys.path.append("%s/.kodi/addons/plugin.video.tide" % os.getenv("HOME"))
 else:
     import xbmc

@@ -2,7 +2,7 @@
 blacktiesports.net
 
 method:
-dubzalgo
+generic/dubzalgo
 """
 
 NAME = "blacktiesports.net"
@@ -10,8 +10,9 @@ KEY = "blacktiesportsnet"
 BASE = "blacktiesports.net"
 
 try:
+    from generic_m3u8_searcher import dubzalgo as get_urls
     from router import PLUGIN, path_for_source
-    from .common import dubzalgo as get_urls, gen_root, gen_can_handle
+    from .common import gen_root, gen_can_handle
 except Exception as e:
     print(e)
 

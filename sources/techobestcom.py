@@ -2,7 +2,7 @@
 techobest.com
 
 method:
-generic m3u8 searcher
+special sucuri cookie + generic/get_urls
 """
 
 NAME = "techobest.com"

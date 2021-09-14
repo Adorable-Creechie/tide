@@ -2,7 +2,7 @@
 sportnews.to
 
 method:
-generic m3u8 searcher
+generic/get_urls
 """
 
 NAME = "sportnews.to"
@@ -12,7 +12,7 @@ BASE = "www.sportnews.to"
 try:
     from .generic_m3u8_searcher import get_urls
     from router import PLUGIN, path_for_source
-    from .common import add_headers, add_items, parse_url, gen_can_handle, gen_root
+    from .common import gen_can_handle, gen_root
 except Exception as e:
     print(e)
 

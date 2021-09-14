@@ -2,7 +2,7 @@
 hockeyweb.site
 
 method:
-generic m3u8 searcher
+generic/get_urls
 """
 
 NAME = "hockeyweb.site"

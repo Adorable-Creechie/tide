@@ -2,7 +2,7 @@
 buffstream1.com
 
 method:
-generic m3u8 searcher
+generic/search
 """
 
 NAME = "buffstream1.com"

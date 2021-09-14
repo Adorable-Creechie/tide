@@ -1,11 +1,3 @@
-if __name__ == "__main__":
-    import sys
-    import os
-    import json
-    # ugly hack, but oh well
-    sys.path.append("%s/.kodi/addons/plugin.video.tide" % os.getenv("HOME"))
-
-
 from helpers import log
 
 from . import generic_m3u8_searcher

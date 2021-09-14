@@ -2,7 +2,7 @@
 redsoccer.info
 
 method:
-generic m3u8 searcher
+generic/get_urls
 """
 
 NAME = "redsoccer.info"
@@ -15,8 +15,6 @@ try:
     from .common import gen_can_handle, gen_root
 except Exception as e:
     print(e)
-
-import urllib
 
 can_handle = gen_can_handle(BASE)
 

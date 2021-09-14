@@ -2,7 +2,7 @@
 b9stream.club
 
 method:
-generic m3u8 searcher
+generic/get_urls
 """
 
 NAME = "b9stream.club"

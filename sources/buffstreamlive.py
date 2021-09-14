@@ -17,7 +17,6 @@ except Exception as e:
     print(e)
 
 import urllib
-import base64
 import re
 from bs4 import BeautifulSoup 
 

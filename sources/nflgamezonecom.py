@@ -2,7 +2,7 @@
 nflgamezone.com
 
 method:
-generic m3u8 searcher
+generic/get_urls
 """
 
 NAME = "nflgamezone.com"
@@ -15,9 +15,6 @@ try:
     from .common import gen_can_handle, gen_root
 except Exception as e:
     print(e)
-
-import urllib
-import re
 
 can_handle = gen_can_handle(BASE)
 
