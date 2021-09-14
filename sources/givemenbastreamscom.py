@@ -1,13 +1,13 @@
 """
-dubsstreamz.com
+givemenbastreams.com
 
 method:
-dubzalgo
+second iframe -> m3u8
 """
 
-NAME = "dubsstreamz.com"
-KEY = "dubsstreamzcom"
-BASE = "www.dubsstreamz.com"
+NAME = "givemenbaststreams.com"
+KEY = "givemenbastreamscom"
+BASE = "givemenbastreams.com"
 
 if __name__ == "__main__":
     import sys
@@ -17,9 +17,10 @@ if __name__ == "__main__":
     sys.path.append("%s/.kodi/addons/plugin.video.tide" % os.getenv("HOME"))
 
 try:
+    from .generic_m3u8_searcher import get_urls as gen_get_urls
     from router import PLUGIN, path_for_source
     from helpers import http_get, header_random_agent, log
-    from .common import add_headers, add_items, parse_url, dubzalgo
+    from .common import add_headers, add_items, parse_url
 except Exception as e:
     print(e)
 
@@ -39,7 +40,12 @@ def root(url):
     add_items(urls, ref_url, PLUGIN)
 
 def get_urls(url):
-    return dubzalgo(url)
+    headers = header_random_agent()
+    p_url = parse_url(url)
+    html = http_get(url, headers=headers)
+    soup = BeautifulSoup(html.text, 'html.parser')
+    second_iframe_url = soup.find_all("iframe")[1].get("src")
+    return gen_get_urls(second_iframe_url)
 
 if __name__ == "__main__":
     def test(url):
@@ -49,5 +55,5 @@ if __name__ == "__main__":
     def test_can_handle(url):
         print(can_handle(url))
 
-    test("http://blacktiesports.net/soccer1")
-    test_can_handle("http://blacktiesports.net/soccer1")
+    test("http://givemenbastreams.com/nba/man-utd-live-stream")
+    test_can_handle("http://givemenbastreams.com/nba/man-utd-live-stream")

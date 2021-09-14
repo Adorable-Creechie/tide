@@ -37,9 +37,17 @@ def get_urls(url):
     headers = header_random_agent()
     parsed_url = parse_url(url)
     html = http_get(url, headers=headers)
-    urls = search(html.text)
+    return search_and_format(html.text)
+
+def search_and_format(html):
+    urls = search(html)
+    return format(urls)
+
+def format(urls):
     formatted = []
     for u in urls:
+        u = u.strip("\'")
+        u = u.strip("\"")
         if u.startswith("//"):
             formatted.append("%s:%s" % (parsed_url.scheme, u))
         else:
@@ -48,7 +56,7 @@ def get_urls(url):
     return no_duplicates
 
 def search(text):
-    return re.findall(r'(?:https?:)?//.*?\.m3u8', text)
+    return re.findall(r'(?:https?:)?//.*?\.m3u8|\'(?:https?:)?//.*?\.m3u8.*?\'|\"(?:https?:)?//.*?\.m3u8.*?\"', text)
 
 if __name__ == "__main__":
     def test(url):

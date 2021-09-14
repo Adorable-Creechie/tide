@@ -1,3 +1,10 @@
+v0.2.5 (2021-09-14)
+- sources(generic): improve search
+- sources: add blacktiesports.net
+- sources: add givemenbastreams.com
+- sources: add myoplay.club
+- sources: add weakstreams.com
+
 v0.2.4 (2021-09-14)
 - providers(soccerstreamlinks_soccer): hotfix events URL
 

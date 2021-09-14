@@ -1,13 +1,19 @@
 """
-allsportsmedia.live
+weakstreams.com
 
 method:
-generic m3u8 searcher
+get vidgstream variable
+GET HLS_URL
+json data {
+ "idgstream": UrlID, "serverid": ""
+}
+where UrlID: vidgstream 
 """
 
-NAME = "allsportsmedia.live"
-KEY = "allsportsmediaslive"
-BASE = "allsportsmedia.live"
+NAME = "weakstreams.com"
+KEY = "weakstreamsto"
+BASE = "weakstreams.com"
+HLS_URL = "http://weakstreams.com/gethls.php"
 
 if __name__ == "__main__":
     import sys
@@ -25,6 +31,7 @@ except Exception as e:
 
 import urllib
 import re
+from bs4 import BeautifulSoup 
 
 def can_handle(url):
     p_url = parse_url(url)
@@ -40,8 +47,18 @@ def get_urls(url):
     headers = header_random_agent()
     p_url = parse_url(url)
     html = http_get(url, headers=headers)
-    m3u8 = re.search(r"source: \"(.*)\"", html.text).group(1)
-    return [m3u8]
+    vidgstream = re.search(r'var vidgstream = \"(.*)\"', html.text).group(1)
+    params = {
+        "idgstream": vidgstream,
+        "serverid": "",
+    }
+    headers.update({"Referer": url, "Origin": url, "Accept-Encoding": "compress"})
+    resp = http_get(HLS_URL, params = params, headers = headers)
+    json = resp.json()
+    rawUrl = json["rawUrl"]
+    if rawUrl == 'null':
+        return []
+    return [rawUrl]
 
 if __name__ == "__main__":
     def test(url):
@@ -51,5 +68,5 @@ if __name__ == "__main__":
     def test_can_handle(url):
         print(can_handle(url))
 
-    test("http://allsportsmedia.live/novo/footy/sun-bung/")
-    test_can_handle("http://allsportsmedia.live/novo/footy/sun-bung/")
+    test("http://weakstreams.com/soccer-streams/uefa-europa-league/young-boys-vs-manchester-united/35995/")
+    test_can_handle("http://weakstreams.com/soccer-streams/uefa-europa-league/young-boys-vs-manchester-united/35995/")

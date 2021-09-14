@@ -1,13 +1,13 @@
 """
-dubsstreamz.com
+blacktiesports.net
 
 method:
 dubzalgo
 """
 
-NAME = "dubsstreamz.com"
-KEY = "dubsstreamzcom"
-BASE = "www.dubsstreamz.com"
+NAME = "blacktiesports.net"
+KEY = "blacktiesportsnet"
+BASE = "blacktiesports.net"
 
 if __name__ == "__main__":
     import sys

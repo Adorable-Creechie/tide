@@ -1,13 +1,13 @@
 """
-dubsstreamz.com
+myoplay.club
 
 method:
-dubzalgo
+generic m3u8 searcher
 """
 
-NAME = "dubsstreamz.com"
-KEY = "dubsstreamzcom"
-BASE = "www.dubsstreamz.com"
+NAME = "myoplay.club"
+KEY = "myoplayclub"
+BASE = "myoplay.club"
 
 if __name__ == "__main__":
     import sys
@@ -17,16 +17,15 @@ if __name__ == "__main__":
     sys.path.append("%s/.kodi/addons/plugin.video.tide" % os.getenv("HOME"))
 
 try:
+    from .generic_m3u8_searcher import get_urls
     from router import PLUGIN, path_for_source
     from helpers import http_get, header_random_agent, log
-    from .common import add_headers, add_items, parse_url, dubzalgo
+    from .common import add_headers, add_items, parse_url
 except Exception as e:
     print(e)
 
 import urllib
-import base64
 import re
-from bs4 import BeautifulSoup 
 
 def can_handle(url):
     p_url = parse_url(url)
@@ -38,9 +37,6 @@ def root(url):
     urls = get_urls(ref_url)
     add_items(urls, ref_url, PLUGIN)
 
-def get_urls(url):
-    return dubzalgo(url)
-
 if __name__ == "__main__":
     def test(url):
         vid_urls = get_urls(url)
@@ -49,5 +45,5 @@ if __name__ == "__main__":
     def test_can_handle(url):
         print(can_handle(url))
 
-    test("http://blacktiesports.net/soccer1")
-    test_can_handle("http://blacktiesports.net/soccer1")
+    test("https://myoplay.club/oplive")
+    test_can_handle("https://myoplay.club/oplive")
