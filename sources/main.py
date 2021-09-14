@@ -13,28 +13,20 @@ from . import ovostreamscom
 from . import liveonscorenet
 from . import liveonscoretv
 from . import hdstreamsclub
-from . import streamcr7net
 from . import techobestcom
 from . import hazmowatch
 from . import footballstreamto
 from . import soccer24hdcom
 from . import dubsstreamzcom
-from . import oomovienet
 from . import papahdlive
-from . import _60fpslive
 from . import myoplaylive
-from . import sportstreampw
 from . import b9streamclub
 from . import redsoccerinfo
 from . import worldstreamsnet
 from . import buffstreamlive
 from . import streamfoottk
 from . import redditstreamsblogspotcom
-from . import daddylivelive
-from . import fightpasssite
-from . import mazymediascom
 from . import hhdstreamsclub
-from . import hockeynewssite
 from . import buffstream1com
 from . import mazystreamsxyz
 from . import alexsportslive
@@ -48,7 +40,6 @@ from . import dubzstreamscom
 from . import sportingliveco
 from . import bdnewszhcom
 from . import daddyliveme
-from . import liveonscoreto
 from . import hockeywebsite
 from . import thecyclingentertainmentcom
 from . import nflscoopnet
@@ -65,28 +56,20 @@ all_sources = [
     liveonscorenet,
     liveonscoretv,
     hdstreamsclub,
-    streamcr7net,
     techobestcom,
     hazmowatch,
     footballstreamto,
     soccer24hdcom,
     dubsstreamzcom,
-    oomovienet,
     papahdlive,
-    _60fpslive,
     myoplaylive,
-    sportstreampw,
     b9streamclub,
     redsoccerinfo,
     worldstreamsnet,
     buffstreamlive,
     streamfoottk,
     redditstreamsblogspotcom,
-    daddylivelive,
-    fightpasssite,
-    mazymediascom,
     hhdstreamsclub,
-    hockeynewssite,
     buffstream1com,
     mazystreamsxyz,
     alexsportslive,
@@ -100,7 +83,6 @@ all_sources = [
     sportingliveco,
     bdnewszhcom,
     daddyliveme,
-    liveonscoreto,
     hockeywebsite,
     thecyclingentertainmentcom,
     nflscoopnet,
