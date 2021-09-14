@@ -59,7 +59,7 @@ def root():
 @PLUGIN.route("%s/events/<key>" % path_for_provider(KEY))
 def event(key):
     def itemMaker(source, fn):
-        li = ListItem("[%s][%s] %s (%s)" % (
+        li = ListItem("[%s][%s] [B]%s[/B] (%s)" % (
             source.get("quality", "XY"),
             source.get("lang", "Xyz"),
             source.get("channel", "UNKNOWN"),
