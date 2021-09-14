@@ -9,18 +9,11 @@ NAME = "techobest.com"
 KEY = "techobestcom"
 BASE = "techobest.com"
 
-if __name__ == "__main__":
-    import sys
-    import os
-    import json
-    # ugly hack, but oh well
-    sys.path.append("%s/.kodi/addons/plugin.video.tide" % os.getenv("HOME"))
-
 try:
     from . import generic_m3u8_searcher
     from router import PLUGIN, path_for_source
-    from helpers import http_get, header_random_agent, log
-    from .common import add_items, parse_url
+    from helpers import http_get, header_random_agent
+    from .common import parse_url, gen_can_handle, gen_root
 except Exception as e:
     print(e)
 
@@ -31,15 +24,11 @@ import re
 import base64
 import urllib
 
-def can_handle(url):
-    p_url = parse_url(url)
-    return p_url.netloc == BASE
+can_handle = gen_can_handle(BASE)
 
 @PLUGIN.route("%s/<url>" % path_for_source(KEY))
 def root(url):
-    ref_url = urllib.parse.unquote(url)
-    urls = get_urls(ref_url)
-    add_items(urls, ref_url, PLUGIN)
+    gen_root(url, get_urls)
 
 def get_sucuri_cookie(result):
     try:

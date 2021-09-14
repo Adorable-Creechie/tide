@@ -36,6 +36,19 @@ def add_items(urls, ref_url, PLUGIN):
         addDirectoryItem(PLUGIN.handle, "", li)
     endOfDirectory(PLUGIN.handle)
 
+def gen_root(url, get_urls):
+    import urllib
+    from router import PLUGIN, path_for_source
+    ref_url = urllib.parse.unquote(url)
+    urls = get_urls(ref_url)
+    add_items(urls, ref_url, PLUGIN)
+
+def gen_can_handle(base):
+    def inner(url):
+        p_url = parse_url(url)
+        return p_url.netloc == base
+    return inner
+
 def parse_url(url):
     return urlparse(url)
 

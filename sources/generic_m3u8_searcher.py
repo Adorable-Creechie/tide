@@ -3,20 +3,13 @@ Searches for all .m3u8 urls in the page and returns them.
 Not very sophisticated, eh?
 """
 
-NAME = "GenericM3U8Searcher"
+NAME = "[COLOR orange]generic[/COLOR]"
 KEY = "genericm3u8searcher"
-
-if __name__ == "__main__":
-    import sys
-    import os
-    import json
-    # ugly hack, but oh well
-    sys.path.append("%s/.kodi/addons/plugin.video.tide" % os.getenv("HOME"))
 
 try:
     from router import PLUGIN, path_for_source
-    from helpers import http_get, header_random_agent, log
-    from sources.common import add_headers, add_items, parse_url
+    from helpers import http_get, header_random_agent
+    from sources.common import add_items, parse_url
 except Exception as e:
     print(e)
 
