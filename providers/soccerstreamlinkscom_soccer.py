@@ -3,7 +3,7 @@ NAME = "soccerstreamlinks [UPPERCASE][B][COLOR pink](soccer)[/COLOR][/B][/UPPERC
 KEY = "soccerstreamlinks-soccer"
 
 # page info
-ROOT_URL = "https://reddits.soccerstreamlinks.com/"
+ROOT_URL = "https://reddits.soccerstreamlinks.com/sports/football/0"
 EVENT_URL = "https://reddits.soccerstreamlinks.com/detail-match/"
 
 if __name__ == "__main__":
