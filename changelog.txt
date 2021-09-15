@@ -1,3 +1,7 @@
+v0.2.7 (2021-09-15)
+- providers: add soccerstreamhd.com (soccer)
+- other cleanup
+
 v0.2.6 (2021-09-14)
 - remove duplicated function by extracting common functions
 - remove dead sources

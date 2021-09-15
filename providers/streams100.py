@@ -6,12 +6,7 @@ KEY = "streams100"
 ROOT_URL = "https://soccerstreams-100.com/"
 EVENT_URL = "https://reddiitt.soccerstreams-100.com/event/"
 
-if __name__ == "__main__":
-    import sys
-    import os
-    import json
-    sys.path.append("%s/.kodi/addons/plugin.video.tide" % os.getenv("HOME"))
-else:
+if __name__ != "__main__":
     import xbmc
     from xbmcplugin import (
         addDirectoryItem,
@@ -21,13 +16,10 @@ else:
     from xbmcgui import (
         ListItem,
     )
-
-try:
     from router import PLUGIN, path_for_provider
-    from helpers import http_get, header_random_agent, log
-    from sources import url_to_source
-except Exception as e:
-    log(e)
+
+from helpers import http_get, header_random_agent
+from sources import url_to_source
 
 import urllib
 from bs4 import BeautifulSoup 

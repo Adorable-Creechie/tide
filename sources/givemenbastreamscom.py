@@ -10,9 +10,9 @@ KEY = "givemenbastreamscom"
 BASE = "givemenbastreams.com"
 
 try:
-    from .generic_m3u8_searcher import snd_iframe_get_urls as get_urls
+    from sources.generic_m3u8_searcher import snd_iframe_get_urls as get_urls
     from router import PLUGIN, path_for_source
-    from .common import gen_can_handle, gen_root
+    from sources.common import gen_can_handle, gen_root
 except Exception as e:
     print(e)
 

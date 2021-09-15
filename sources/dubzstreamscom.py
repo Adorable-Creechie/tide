@@ -14,7 +14,7 @@ BASE = "www.dubzstreams.com"
 try:
     from router import PLUGIN, path_for_source
     from helpers import http_get, header_random_agent, log
-    from .common import parse_url, join_url, gen_can_handle, gen_root
+    from sources.common import parse_url, join_url, gen_can_handle, gen_root
 except Exception as e:
     print(e)
 

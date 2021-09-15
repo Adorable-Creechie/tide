@@ -1,10 +1,10 @@
 # provider info
-NAME = "soccerstreamlinks [UPPERCASE][B][COLOR pink](soccer)[/COLOR][/B][/UPPERCASE]"
-KEY = "soccerstreamlinks"
+NAME = "soccerstreamshd [UPPERCASE][B][COLOR pink](soccer)[/COLOR][/B][/UPPERCASE]"
+KEY = "soccerstreamshd"
 
 # page info
-ROOT_URL = "https://reddits.soccerstreamlinks.com/sports/football/0"
-EVENT_URL = "https://reddits.soccerstreamlinks.com/detail-match/"
+ROOT_URL = "https://reddit.soccerstreamshd.com/"
+EVENT_URL = "https://reddit.soccerstreamshd.com/match/"
 
 if __name__ != "__main__":
     import xbmc
@@ -71,7 +71,7 @@ def get_all_sources(key):
     url = "%s%s/" % (EVENT_URL, key)
     html = http_get(url, headers = headers)
     soup = BeautifulSoup(html.text, 'html.parser')
-    table = soup.find(id="package-live-stream")
+    table = soup.find(class_="table-streams")
     table_body = table.find("tbody")
     rows = table_body.find_all("tr")
     all = []
@@ -97,26 +97,25 @@ def get_all_sources(key):
     return all
 
 def parse_match(match):
-    columns = match.find_all("td")
-
-    home_and_score = columns[0]
-    url = home_and_score.find("a").get("href")
+    url = match.get("datatype")
     key = url.strip("/").split("/")[-1]
-    home_team = home_and_score.find("a").find("span").getText().strip()
-    thumb = home_and_score.find("img").get("src")
-    score = home_and_score.find(class_="record").getText().strip()
+    columns = match.find_all("div")
 
-    away = columns[1]
-    away_team = away.find("a").find("span").getText().strip()
+    home = columns[0]
+    home_team = home.getText().strip()
+    thumb = home.find("img").get("src")
 
-    time = columns[2]
-    time = time.getText().strip()
+    score = columns[1]
+    home_score = score.find(class_="home-score").getText().strip()
+    status = score.find("a").getText().strip()
+    away_score = score.find(class_="away-score").getText().strip()
+    score = "{} [COLOR red]{}[/COLOR] {}".format(home_score, status, away_score)
 
-    location = columns[3]
-    location = location.getText().strip()
+    away = columns[2]
+    away_team = away.getText().strip()
 
     return {
-        "name": "{} {} {} [{}] ({})".format(home_team, score, away_team, time, location),
+        "name": "{} {} {}".format(home_team, score, away_team),
         "thumb": thumb,
         "url": url,
         "key": key
@@ -125,17 +124,28 @@ def parse_match(match):
 def get_all_events():
     html = http_get(ROOT_URL)
     soup = BeautifulSoup(html.text, "html.parser")
-    schedules = soup.find_all(class_="responsive-table-wrap")
-    captions = soup.find_all(class_="table-caption")
+    container = soup.find(class_="timeline-left")
+    els = container.find_all("div")
+
     all = []
-    for (caption, schedule) in zip(captions, schedules):
-        league = caption.getText().strip()
-        table_body = schedule.find("tbody")
-        matches = table_body.find_all("tr")
-        for match in matches:
-            parsed_match = parse_match(match)
-            parsed_match["league"] = league
-            all.append(parsed_match)
+    league = None
+    match = {}
+    for el in els:
+        classes = el.get("class")
+        is_league = "timeline-breaker" in classes
+        is_details = "timeline-item" in classes
+        is_time = "timeline-start-time" in classes
+
+        if is_league:
+            league = el.getText().strip()
+        elif is_details:
+            match = parse_match(el)
+        elif is_time:
+            time = el.getText().strip()
+            match["name"] += " [{}]".format(time)
+            match["league"] = league
+            all.append(match)
+
     return all
 
 if __name__ == "__main__":
@@ -144,7 +154,7 @@ if __name__ == "__main__":
         print(r)
 
     def test_get_all_sources():
-        r = get_all_sources("9576168")
+        r = get_all_sources("9757737")
         print(json.dumps(r))
 
     test_get_all_events()

@@ -9,9 +9,9 @@ KEY = "streamspasscom"
 BASE = "www.streamspass.com"
 
 try:
-    from .hazmowatch import get_urls
+    from sources.hazmowatch import get_urls
     from router import PLUGIN, path_for_source
-    from .common import gen_can_handle, gen_root
+    from sources.common import gen_can_handle, gen_root
 except Exception as e:
     print(e)
 
