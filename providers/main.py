@@ -1,8 +1,8 @@
 from . import streams100
-from . import soccerstreamlinkscom_soccer
+from . import soccerstreamlinkscom
 
 # list of providers
 all_providers = [
     # streams100,
-    soccerstreamlinkscom_soccer
+    soccerstreamlinkscom
 ]

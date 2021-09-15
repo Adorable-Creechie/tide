@@ -1,6 +1,6 @@
 # provider info
 NAME = "soccerstreamlinks [UPPERCASE][B][COLOR pink](soccer)[/COLOR][/B][/UPPERCASE]"
-KEY = "soccerstreamlinks-soccer"
+KEY = "soccerstreamlinks"
 
 # page info
 ROOT_URL = "https://reddits.soccerstreamlinks.com/sports/football/0"
