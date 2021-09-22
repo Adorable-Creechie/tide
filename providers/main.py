@@ -4,7 +4,7 @@ from . import soccerstreamshdcom
 
 # list of providers
 all_providers = [
-    # streams100,
+    streams100,
     soccerstreamlinkscom,
     soccerstreamshdcom
 ]

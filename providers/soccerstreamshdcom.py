@@ -6,7 +6,7 @@ KEY = "soccerstreamshd"
 ROOT_URL = "https://reddit.soccerstreamshd.com/"
 EVENT_URL = "https://reddit.soccerstreamshd.com/match/"
 
-if __name__ != "__main__":
+try:
     import xbmc
     from xbmcplugin import (
         addDirectoryItem,
@@ -16,8 +16,10 @@ if __name__ != "__main__":
     from xbmcgui import (
         ListItem,
     )
-    from router import PLUGIN, path_for_provider
+except:
+    pass
 
+from router import PLUGIN, path_for_provider
 from providers.common import league_color
 from helpers import http_get, header_random_agent
 from sources import url_to_source
