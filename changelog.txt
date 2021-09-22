@@ -1,3 +1,6 @@
+v0.2.8 (2021-09-20)
+- sources(streams100): enable
+
 v0.2.7 (2021-09-15)
 - providers: add soccerstreamhd.com (soccer)
 - other cleanup
