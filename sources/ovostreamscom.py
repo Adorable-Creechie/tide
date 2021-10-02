@@ -7,10 +7,10 @@ generic/first_iframe_get_urls
 
 NAME = "ovostreams.com"
 KEY = "ovostreamscom"
-BASE = "ovostreams.com"
+BASE = "www.ovostreams.com"
 
 try:
-    from sources.generic_m3u8_searcher import first_iframe_get_urls as get_urls
+    from sources.generic_m3u8_searcher import get_urls
     from router import PLUGIN, path_for_source
     from sources.common import gen_can_handle, gen_root
 except Exception as e:
@@ -30,5 +30,5 @@ if __name__ == "__main__":
     def test_can_handle(url):
         print(can_handle(url))
 
-    test("http://www.ovostreams.com/liverpool-vs-burnley.php")
-    test_can_handle("http://www.ovostreams.com/liverpool-vs-burnley.php")
+    test("http://www.ovostreams.com/manchester-utd-vs-everton-live-stream.php")
+    test_can_handle("http://www.ovostreams.com/manchester-utd-vs-everton-live-stream.php")
