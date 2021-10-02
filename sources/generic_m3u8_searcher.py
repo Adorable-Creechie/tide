@@ -22,11 +22,29 @@ def root(url):
     urls = get_urls(ref_url)
     add_items(urls, ref_url, PLUGIN)
 
-def get_urls(url):
+def get_urls(url, referer = ''):
     headers = header_random_agent()
+    if referer != '':
+        headers.update({"Referer": referer})
     parsed_url = parse_url(url)
     html = http_get(url, headers=headers)
     return search_and_format(html.text)
+
+def nested_iframe_n_get_urls(url, nested_level = 1, nth_iframe = 0):
+    headers = header_random_agent()
+    cookies = {}
+    p_url = parse_url(url)
+    html = http_get(url, headers=headers)
+    cookies.update(html.cookies)
+    soup = BeautifulSoup(html.text, 'html.parser')
+    iframe_url = soup.find_all("iframe")[nth_iframe].get("src")
+    if nested_level == 0:
+        return get_urls(iframe_url, url)
+    else:
+        return nested_iframe_n_get_urls(iframe_url, nested_level - 1, nth_iframe)
+
+def nested_iframe_2_get_urls(url, nth_iframe = 0):
+    return nested_iframe_n_get_urls(url, 1, nth_iframe)
 
 def nth_iframe_get_urls(url, nth_iframe = 0):
     headers = header_random_agent()
