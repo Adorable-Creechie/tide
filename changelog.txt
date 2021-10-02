@@ -1,3 +1,6 @@
+v0.2.9 (2021-10-02)
+- sources: fix www.ovostreams.com
+
 v0.2.8 (2021-09-20)
 - sources(streams100): enable
 
