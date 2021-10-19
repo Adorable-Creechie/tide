@@ -1,3 +1,6 @@
+v0.3.101 / (v0.3.1) (2021-10-10)
+- split into leia / matrix versions
+
 v0.2.9 (2021-10-02)
 - sources: fix www.ovostreams.com
 - sources: add poscitech.com
