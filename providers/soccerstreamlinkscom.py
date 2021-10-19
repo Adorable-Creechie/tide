@@ -118,7 +118,7 @@ def parse_match(match):
     location = location.getText().strip()
 
     return {
-        "name": "{} {} {} [{}] ({})".format(home_team, score, away_team, time, location),
+        "name": u"{} {} {} [{}] ({})".format(home_team, score, away_team, time, location),
         "thumb": thumb,
         "url": url,
         "key": key

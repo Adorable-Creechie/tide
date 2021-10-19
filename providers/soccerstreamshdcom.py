@@ -111,13 +111,13 @@ def parse_match(match):
     home_score = score.find(class_="home-score").getText().strip()
     status = score.find("a").getText().strip()
     away_score = score.find(class_="away-score").getText().strip()
-    score = "{} [COLOR red]{}[/COLOR] {}".format(home_score, status, away_score)
+    score = u"{} [COLOR red]{}[/COLOR] {}".format(home_score, status, away_score)
 
     away = columns[2]
     away_team = away.getText().strip()
 
     return {
-        "name": "{} {} {}".format(home_team, score, away_team),
+        "name": u"{} {} {}".format(home_team, score, away_team),
         "thumb": thumb,
         "url": url,
         "key": key
@@ -144,7 +144,7 @@ def get_all_events():
             match = parse_match(el)
         elif is_time:
             time = el.getText().strip()
-            match["name"] += " [{}]".format(time)
+            match["name"] += u" [{}]".format(time)
             match["league"] = league
             all.append(match)
 

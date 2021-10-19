@@ -109,7 +109,7 @@ def parse_match(match, league_name):
     return {
         "url": url,
         "key": key,
-        "name": "{} [COLOR red]{}[/COLOR] {}".format(home_team, score, away_team),
+        "name": u"{} [COLOR red]{}[/COLOR] {}".format(home_team, score, away_team),
         "league": league_name,
         "thumb": thumb
     }
