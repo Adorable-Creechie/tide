@@ -3,8 +3,8 @@ NAME = "soccerstreamlinks [UPPERCASE][B][COLOR pink](soccer)[/COLOR][/B][/UPPERC
 KEY = "soccerstreamlinks"
 
 # page info
-ROOT_URL = "https://reddits.soccerstreamlinks.com/sports/football/0"
-EVENT_URL = "https://reddits.soccerstreamlinks.com/detail-match/"
+ROOT_URL = "https://redditz.soccerstreamlinks.com/sports/football/0"
+EVENT_URL = "https://redditz.soccerstreamlinks.com/detail-match/"
 
 try:
     import xbmc
@@ -149,4 +149,4 @@ if __name__ == "__main__":
         r = get_all_sources("9576168")
         print(json.dumps(r))
 
-    test_get_all_events()
+    test_get_all_sources()
