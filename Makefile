@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := default
 proj = "plugin.video.tide"
-version = "0.3.1"
+version = "0.3.2"
 
 default:
 	git archive --prefix=$(proj)/ leia -o $(proj)-$(version).zip
