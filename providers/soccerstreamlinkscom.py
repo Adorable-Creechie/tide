@@ -4,7 +4,7 @@ KEY = "soccerstreamlinks"
 
 # page info
 ROOT_URL = "https://redditz.soccerstreamlinks.com/sports/football/0"
-EVENT_URL = "https://redditz.soccerstreamlinks.com/detail-match/"
+EVENT_URL = "https://reddit1.soccerstreamlinks.com/detail-match/"
 
 try:
     import xbmc
@@ -73,7 +73,8 @@ def get_all_sources(key):
     url = "%s%s/" % (EVENT_URL, key)
     html = http_get(url, headers = headers)
     soup = BeautifulSoup(html.text, 'html.parser')
-    table = soup.find(id="package-live-stream")
+    container = soup.find(id="live-stream")
+    table = container.find("table")
     table_body = table.find("tbody")
     rows = table_body.find_all("tr")
     all = []
@@ -141,12 +142,14 @@ def get_all_events():
     return all
 
 if __name__ == "__main__":
+    import json
+
     def test_get_all_events():
         r = get_all_events()
         print(r)
 
     def test_get_all_sources():
-        r = get_all_sources("9576168")
+        r = get_all_sources("10385707")
         print(json.dumps(r))
 
     test_get_all_sources()
