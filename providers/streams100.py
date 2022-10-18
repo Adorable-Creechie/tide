@@ -18,10 +18,10 @@ try:
 except:
     pass
 
-from router import PLUGIN, path_for_provider
 from providers.common import league_color
 from helpers import http_get, header_random_agent
 from sources import url_to_source
+from router import PLUGIN, path_for_provider
 
 import urllib
 from bs4 import BeautifulSoup 
@@ -117,7 +117,7 @@ def parse_match(match, league_name):
 def get_all_events():
     html = http_get(ROOT_URL)
     soup = BeautifulSoup(html.text, 'html.parser')
-    leagues = soup.find_all(class_="MuiPaper-root MuiAccordion-root jss16 Mui-expanded MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded")
+    leagues = soup.find_all(class_="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root MuiAccordion-rounded Mui-expanded MuiAccordion-gutters")
     all = []
     for l in leagues:
         league_name = l.find(class_="MuiTypography-root MuiCardHeader-title MuiTypography-body2 MuiTypography-displayBlock").getText().strip()
@@ -135,4 +135,4 @@ if __name__ == "__main__":
         r = get_all_sources("/game/fra-1/609466")
         print(r)
 
-    test_get_all_sources()
+    test_get_all_events()
