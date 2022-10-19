@@ -41,6 +41,7 @@ from . import myoplayclub
 from . import givemenbastreamscom
 from . import blacktiesportsnet
 from . import poscitechcom
+from . import techclipsnet
 
 # list of sources
 all_sources = [
@@ -85,6 +86,7 @@ all_sources = [
     givemenbastreamscom,
     blacktiesportsnet,
     poscitechcom,
+    techclipsnet,
 ]
 
 def url_to_source(url, fallback = generic_m3u8_searcher):
