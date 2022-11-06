@@ -4,7 +4,7 @@ KEY = "soccerstreamlinks"
 
 # page info
 ROOT_URL = "https://redditz.soccerstreamlinks.com/sports/football/0"
-EVENT_URL = "https://reddit1.soccerstreamlinks.com/detail-match/"
+EVENT_URL = "https://onsite.soccerstreamlinks.com/detail-match/"
 
 try:
     import xbmc
@@ -149,7 +149,7 @@ if __name__ == "__main__":
         print(r)
 
     def test_get_all_sources():
-        r = get_all_sources("10385707")
+        r = get_all_sources("10390028")
         print(json.dumps(r))
 
     test_get_all_sources()
